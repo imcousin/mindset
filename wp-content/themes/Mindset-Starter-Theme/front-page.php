@@ -141,6 +141,49 @@ $args = array(
 
 			<section class="front-slider">
 				<h1>Compliments</h1>
+                <!-- Place somewhere in the <body> of your page -->
+<div class="flexslider">
+  <ul class="slides">
+          <?php
+ //conditions
+$args = array( 
+        'post_type' => 'compliment',
+        'posts_per_page' => -1,
+    //'order'   => 'ASC',
+    //'orderby'   => 'title',
+     );
+    //variable, can name it as you wish
+    $compliments = new WP_Query( $args );
+    
+    //Loop starts
+    if ( $compliments->have_posts() ) { 
+
+      while ( $compliments->have_posts() ) {
+        $compliments->the_post();
+        
+        echo '<li class="compliment">';
+            if (function_exists ('get_field')){
+                  if( get_field('compliment_content') ){
+                    echo "<div class=\"compliment-container\">";
+                    echo "<blockquote>";
+                      the_field( 'compliment_content' );
+
+                    echo "</blockquote>";
+                  } //content end
+                  if( get_field('compliment_author') ){
+                    echo "<p class=\"compliment-author\">";
+                      the_field( 'compliment_author' );
+                      echo "</p>";
+                      echo "</div>";
+                  } // author end
+            }
+        echo '</li>';
+      } // end while
+      wp_reset_postdata(); 
+    } ?>
+
+  </ul>
+</div>
 			</section>
 
 		</main><!-- #main -->

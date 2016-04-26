@@ -152,6 +152,19 @@ function mindset_scripts() {
 
     wp_enqueue_script( 'mindset-superfish-settings', get_template_directory_uri() . '/js/superfish-settings.js', array('mindset-superfish'), '20140328', true );
 
+    wp_enqueue_script( 'backtotop-btn', get_template_directory_uri() . '/js/backtotop-btn.js', '20140328', true );
+
+    wp_enqueue_style( 'backtotop-style', get_template_directory_uri() . '/css/backtotop-btn.css' );  
+
+if(is_front_page()){
+    wp_enqueue_script( 'flex-slider-js', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'), true );
+
+    wp_enqueue_style( 'flex-slider-style', get_template_directory_uri() . '/css/flexslider.css' );
+
+    wp_enqueue_script( 'flex-slider-settings', get_template_directory_uri() . '/js/flexslider-settings.js', array('flex-slider-js'), '20160426', true );
+}
+
+
     wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css');            
         
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -221,3 +234,20 @@ $classes[] = $post->post_type . '-' . $post->post_name;
 return $classes;
 }
 add_filter( 'body_class', 'add_slug_body_class' );
+
+
+
+
+ function mindset_excerpt_more( $more ) {
+        return '<a class="read-more" href="' . get_permalink() . '">...Continue Reading...</a>';
+    }
+    add_filter( 'excerpt_more', 'mindset_excerpt_more' );
+
+    function mindset_excerpt_length( $length ) {
+    	if(!is_post_type_archive('work')){
+	return 55;
+}else {
+		return 15;
+}
+}
+add_filter( 'excerpt_length', 'mindset_excerpt_length', 999 );

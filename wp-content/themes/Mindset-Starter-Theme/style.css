@@ -1273,6 +1273,11 @@ COMPLIMENTS Styles (both front, about page and sidebar)
 .compliment-container blockquote p:before,.compliment-container blockquote p:after {
 	content:"\"";
 }
+#menu-item-1715 span {
+	display: inline-block;
+	text-indent: -9999px;
+}
+
 .compliment-author {
 	float:right;
 }
@@ -1303,7 +1308,7 @@ SERVICES Page
 --------------------------------------------------------------*/
 
 
-}
+
 /*--------------------------------------------------------------
 SIDEBAR
 --------------------------------------------------------------*/
@@ -1312,3 +1317,9 @@ SIDEBAR
 	list-style-type:square;
 	list-style-position:inside;
 	} 
+
+
+/*--------------------------------------------------------------
+BACK TO TOP BUTTON
+--------------------------------------------------------------*/
+

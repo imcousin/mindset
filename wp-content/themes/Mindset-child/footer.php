@@ -23,9 +23,8 @@
                    </div><!-- .site-info -->
                 </div><!-- .container -->
             </footer><!-- #colophon -->
-            
-<a href="#0" class="cd-top">Top</a>
 </div><!-- #page -->
+
 <?php wp_footer(); ?>
 
 </body>
